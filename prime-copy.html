@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Video Clone</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:#000;
+            color:white;
+        }
+
+        /* NAVBAR */
+
+        nav{
+            background:#0f171e;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 70px;
+            position:fixed;
+            width:100%;
+            top:0;
+            z-index:100;
+        }
+
+        .nav-left{
+            display:flex;
+            align-items:center;
+            gap:40px;
+        }
+
+        .logo{
+            font-size:28px;
+            font-weight:bold;
+        }
+
+        .nav-links{
+            display:flex;
+            gap:30px;
+        }
+
+        .nav-links a{
+            text-decoration:none;
+            color:white;
+            font-size:18px;
+        }
+
+        .nav-right{
+            display:flex;
+            align-items:center;
+            gap:25px;
+        }
+
+        .join-btn{
+            background:#1f80e0;
+            color:white;
+            border:none;
+            padding:14px 24px;
+            border-radius:8px;
+            cursor:pointer;
+            font-size:16px;
+            font-weight:bold;
+        }
+
+        /* COMMON SECTION */
+
+        section{
+            height:100vh;
+            display:flex;
+            align-items:center;
+        }
+
+        .content{
+            width:45%;
+            padding-left:80px;
+        }
+
+        .content h1{
+            font-size:70px;
+            margin-bottom:30px;
+            line-height:1.1;
+        }
+
+        .content p{
+            font-size:28px;
+            line-height:1.5;
+            margin-bottom:40px;
+        }
+
+        .content button{
+            background:white;
+            color:black;
+            border:none;
+            padding:20px 35px;
+            border-radius:8px;
+            font-size:22px;
+            cursor:pointer;
+        }
+
+        /* HERO SECTION */
+
+        .hero{
+            background:
+            linear-gradient(
+                to right,
+                rgba(0,0,0,1) 0%,
+                rgba(0,0,0,0.95) 35%,
+                rgba(0,0,0,0.6) 55%,
+                rgba(0,0,0,0) 75%
+            ),
+            url("https://m.media-amazon.com/images/G/31/AmazonVideo/2019/MLP.jpg");
+
+            background-size:cover;
+            background-position:center;
+        }
+
+        /* RENTAL SECTION */
+
+        .rentals{
+            background:
+            linear-gradient(
+                to right,
+                rgba(0,0,0,1) 0%,
+                rgba(0,0,0,0.95) 35%,
+                rgba(0,0,0,0.6) 55%,
+                rgba(0,0,0,0) 75%
+            ),
+            url("https://m.media-amazon.com/images/G/31/AmazonVideo/2021/X-site/MLP/TVOD/TVOD_MLP_Right.jpg");
+
+            background-size:cover;
+            background-position:center;
+        }
+
+        /* SUBSCRIPTIONS */
+
+        .subscriptions{
+            background:#03111f;
+            min-height:100vh;
+            padding:80px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .sub-left{
+            width:45%;
+        }
+
+        .sub-left h1{
+            font-size:68px;
+            margin-bottom:30px;
+            line-height:1.1;
+        }
+
+        .sub-left p{
+            font-size:28px;
+            line-height:1.5;
+        }
+
+        .sub-grid{
+            width:48%;
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:15px;
+        }
+
+        .box{
+            height:180px;
+            background:#1f5d96;
+            border-radius:12px;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            font-size:30px;
+            font-weight:bold;
+
+            transition:0.3s;
+        }
+
+        .box:hover{
+            transform:scale(1.05);
+        }
+
+        @media(max-width:900px){
+
+            nav{
+                padding:20px;
+                flex-direction:column;
+                gap:15px;
+            }
+
+            .nav-links{
+                flex-wrap:wrap;
+                justify-content:center;
+            }
+
+            .content,
+            .sub-left{
+                width:100%;
+                padding:20px;
+            }
+
+            .content h1,
+            .sub-left h1{
+                font-size:45px;
+            }
+
+            .content p,
+            .sub-left p{
+                font-size:20px;
+            }
+
+            .subscriptions{
+                flex-direction:column;
+                gap:40px;
+            }
+
+            .sub-grid{
+                width:100%;
+                grid-template-columns:repeat(2,1fr);
+            }
+        }
+
+        @media(max-width:600px){
+
+            .sub-grid{
+                grid-template-columns:1fr;
+            }
+
+            .content h1,
+            .sub-left h1{
+                font-size:35px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="nav-left">
+
+            <div class="logo">prime video</div>
+
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Free to me</a>
+                <a href="#">Movies</a>
+                <a href="#">TV shows</a>
+                <a href="#">Live TV</a>
+                <a href="#">Subscriptions</a>
+            </div>
+
+        </div>
+
+        <div class="nav-right">
+            <span>🔍</span>
+            <span>EN ▼</span>
+            <span>☰</span>
+            <button class="join-btn">Join Prime</button>
+        </div>
+
+    </nav>
+
+    <!-- SECTION 1 -->
+
+    <section class="hero">
+
+        <div class="content">
+
+            <h1>Welcome to Prime Video</h1>
+
+            <p>
+                Join Prime to watch the latest movies, TV shows and
+                award-winning Amazon Originals
+            </p>
+
+            <button>Sign in to join Prime</button>
+
+        </div>
+
+    </section>
+
+    <!-- SECTION 2 -->
+
+    <section class="rentals">
+
+        <div class="content">
+
+            <h1>Movie rentals on Prime Video</h1>
+
+            <p>
+                Early Access to new movies, before digital subscription
+            </p>
+
+            <button>Rent now</button>
+
+        </div>
+
+    </section>
+
+    <!-- SECTION 3 -->
+
+    <section class="subscriptions">
+
+        <div class="sub-left">
+
+            <h1>
+                Your favorite subscriptions
+                all in one place
+            </h1>
+
+            <p>
+                Customers can subscribe to get access to a variety
+                of premium and specialty content, easily accessible
+                within the Prime Video app
+            </p>
+
+        </div>
+
+        <div class="sub-grid">
+
+            <div class="box">Logo</div>
+            <div class="box">Logo</div>
+            <div class="box">Logo</div>
+
+            <div class="box">Logo</div>
+            <div class="box">Logo</div>
+            <div class="box">Logo</div>
+
+            <div class="box">Logo</div>
+            <div class="box">Logo</div>
+            <div class="box">Logo</div>
+
+        </div>
+
+    </section>
+
+</body>
+</html>
