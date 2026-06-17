@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pokemon HP Battle</title>
+</head>
+<body>
+
+    <h2>Pokemon HP Battle</h2>
+
+    <button onclick="startBattle()">Start Battle</button>
+
+    <div id="result"></div>
+
+    <script>
+        async function getPokemon() {
+            const id = Math.floor(Math.random() * 1025) + 1;
+
+            const response = await fetch(
+                "https://pokeapi.co/api/v2/pokemon/" + id
+            );
+
+            return await response.json();
+        }
+
+        async function startBattle() {
+            const pokemon1 = await getPokemon();
+            const pokemon2 = await getPokemon();
+
+            const hp1 = pokemon1.stats[0].base_stat;
+            const hp2 = pokemon2.stats[0].base_stat;
+
+            let winner;
+
+            if (hp1 > hp2) {
+                winner = pokemon1.name;
+            } else if (hp2 > hp1) {
+                winner = pokemon2.name;
+            } else {
+                winner = "Draw";
+            }
+
+            document.getElementById("result").innerHTML = `
+                <h3>Battle Result</h3>
+
+                <div>
+                    <h4>${pokemon1.name}</h4>
+                    <img src="${pokemon1.sprites.front_default}" alt="${pokemon1.name}">
+                    <p>HP: ${hp1}</p>
+                </div>
+
+                <hr>
+
+                <div>
+                    <h4>${pokemon2.name}</h4>
+                    <img src="${pokemon2.sprites.front_default}" alt="${pokemon2.name}">
+                    <p>HP: ${hp2}</p>
+                </div>
+
+                <hr>
+
+                <h2>Winner: ${winner}</h2>
+            `;
+        }
+    </script>
+
+</body>
+</html>
