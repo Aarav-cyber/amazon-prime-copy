@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Todo List</title>
+</head>
+<body>
+
+    <h2>Todo List</h2>
+
+    <form id="tf">
+        <input type="text" id="taskInput" placeholder="Enter a task" required>
+        <button type="submit">Add Task</button>
+    </form>
+
+    <ul id="todoList"></ul>
+
+    <script>
+        const form = document.getElementById("tf");
+        const input = document.getElementById("taskInput");
+        const list = document.getElementById("todoList");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const task = input.value;
+
+            const li = document.createElement("li");
+            li.textContent = task;
+
+            list.appendChild(li);
+
+            input.value = "";
+        });
+    </script>
+
+</body>
+</html>
