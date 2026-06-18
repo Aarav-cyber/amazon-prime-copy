@@ -1,4 +1,4 @@
-const {addproduct,getall,getbyid} = require("../controller/cocktailController")
+const {addproduct,getall,getbyid} = require("../Controller/cocktailController")
 const express = require("express")
 const router = express.Router()
 const multer = require("multer")
