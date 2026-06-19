@@ -16,8 +16,8 @@ app.use("/api/auth", authRoutes);
 connectdb();
 
 app.get('/', (req, res) => {
-    console.log("server working");
-})
+    res.send("Server is working");
+});
 
 app.listen(port, () => {
     console.log(`Server is running`);
